@@ -2,9 +2,11 @@
 
 import pymysql
 
+
 def connect_to_database(host, user, password, database):
     conn = pymysql.connect(host=host, user=user, password=password, database=database)
     return conn
+
 
 def create_table(conn, table_name):
     cursor = conn.cursor()
@@ -25,11 +27,13 @@ def create_table(conn, table_name):
     cursor.execute(create_table_query)
     cursor.close()
 
+
 def insert_data(conn, table_name, data):
     cursor = conn.cursor()
     insert_query = f"INSERT INTO {table_name} (Mon, Tue, Wen, Thur, Fri, Sat, Sun, info, start_time, end_time) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
     cursor.execute(insert_query, data)
     cursor.close()
+
 
 def close_connection(conn):
     conn.commit()
