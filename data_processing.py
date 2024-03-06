@@ -34,8 +34,8 @@ def process_data(file_path):
     df = df.drop(list(range(0, 5265, 15)))
     df = df.reset_index(drop=True)
     df['info'] = df['info'].str.replace('-', '_')
-    df[['Mon', 'Tue', 'Wen', 'Thur', 'Fri', 'Sat', 'Sun']] = df[
-        ['Mon', 'Tue', 'Wen', 'Thur', 'Fri', 'Sat', 'Sun']].notna().astype(int)
+    df[['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']] = df[
+        ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']].notna().astype(int)
 
     time_columns = ['start_time', 'end_time']
     specified_time = '05:00:00'

@@ -13,8 +13,8 @@ def create_table(conn, table_name):
     create_table_query = f"""CREATE TABLE IF NOT EXISTS {table_name} (
         id INT AUTO_INCREMENT PRIMARY KEY,
         Mon INT ,
-        Tue INT ,
-        Wen INT ,
+        Tues INT ,
+        Wed INT ,
         Thur INT ,
         Fri INT ,
         Sat INT ,
@@ -30,7 +30,7 @@ def create_table(conn, table_name):
 
 def insert_data(conn, table_name, data):
     cursor = conn.cursor()
-    insert_query = f"INSERT INTO {table_name} (Mon, Tue, Wen, Thur, Fri, Sat, Sun, info, start_time, end_time) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    insert_query = f"INSERT INTO {table_name} (Mon, Tues, Wed, Thur, Fri, Sat, Sun, info, start_time, end_time) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
     cursor.execute(insert_query, data)
     cursor.close()
 
