@@ -13,6 +13,6 @@ def delete_all_table_data(conn):
     conn.commit()
 
 # 使用示例
-conn = pymysql.connect(host='localhost', user='root', password='3260.hxs', database='vacantclassrooms')
+conn = pymysql.connect(host='localhost', user='root', password='111111', database='vacantclassrooms')
 delete_all_table_data(conn)
 conn.close()
