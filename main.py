@@ -107,23 +107,23 @@ class logInWidget(QWidget):
         cursor.execute('SELECT * FROM users WHERE username = %s AND password = %s', (username, password))
         result = cursor.fetchone()
         if result:
-            print('登录成功！')
-            lofIn_succeed_message_box = QMessageBox()
-            lofIn_succeed_message_box.setIcon(QMessageBox.Information)
-            lofIn_succeed_message_box.setWindowTitle("登录成功")
-            lofIn_succeed_message_box.setText("登录成功！")
-
-            # 设置对话框的几何属性
-            lofIn_succeed_message_box.setGeometry(center_x - lofIn_succeed_message_box.width() // 2,
-                                                  center_y - lofIn_succeed_message_box.height() // 2, 300,
-                                                  300)  # 设置对话框的位置和大小
-
-            # 显示警告对话框
-            api_logInSucceed = lofIn_succeed_message_box.exec_()
+            # print('登录成功！')
+            # lofIn_succeed_message_box = QMessageBox()
+            # lofIn_succeed_message_box.setIcon(QMessageBox.Information)
+            # lofIn_succeed_message_box.setWindowTitle("登录成功")
+            # lofIn_succeed_message_box.setText("登录成功！")
+            #
+            # # 设置对话框的几何属性
+            # lofIn_succeed_message_box.setGeometry(center_x - lofIn_succeed_message_box.width() // 2,
+            #                                       center_y - lofIn_succeed_message_box.height() // 2, 300,
+            #                                       300)  # 设置对话框的位置和大小
+            #
+            # # 显示警告对话框
+            # api_logInSucceed = lofIn_succeed_message_box.exec_()
             # 进入主界面
-            if api_logInSucceed == QMessageBox.Ok:
-                self.open_main_page()
-            return True
+            # if api_logInSucceed == QMessageBox.Ok:
+            self.open_main_page()
+            # return True
         else:
             print('登录失败，请检查用户名和密码。')
             login_failed_message_box = QMessageBox()
