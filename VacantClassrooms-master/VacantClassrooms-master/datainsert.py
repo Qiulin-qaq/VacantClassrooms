@@ -8,7 +8,7 @@ def main():
     file_path = 'static/course.xls'
     df = data_processing.process_data(file_path)
 
-    conn = database.connect_to_database(host='localhost', user='root', password='3260.hxs', database='vacantclassrooms')
+    conn = database.connect_to_database(host='localhost', user='root', password='111111', database='vacantclassrooms')
 
     for name, group_data in df.groupby('info'):
         database.create_table(conn, name)
