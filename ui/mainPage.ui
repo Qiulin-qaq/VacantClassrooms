@@ -13,9 +13,10 @@
   <property name="windowTitle">
    <string>空教室查询系统主界面</string>
   </property>
+
   <property name="windowIcon">
    <iconset>
-    <normaloff>:/searchIcon.png</normaloff>:/searchIcon.png</iconset>
+    <normaloff>../image/searchIcon.png</normaloff>../image/searchIcon.png</iconset>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_6">
    <item>

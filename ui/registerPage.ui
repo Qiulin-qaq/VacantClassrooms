@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>:/searchIcon.png</normaloff>:/searchIcon.png</iconset>
+    <normaloff>../image/searchIcon.png</normaloff>../image/searchIcon.png</iconset>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_4">
    <item>

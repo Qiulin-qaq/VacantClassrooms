@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>893</width>
-    <height>731</height>
+    <width>430</width>
+    <height>236</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>:/searchIcon.png</normaloff>:/searchIcon.png</iconset>
+    <normaloff>../image/searchIcon.png</normaloff>../image/searchIcon.png</iconset>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_4">
    <item>
