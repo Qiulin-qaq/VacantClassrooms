@@ -1,5 +1,5 @@
 from functools import reduce
-
+import re
 from datetime import timedelta
 
 import pymysql, sys
@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import QApplication, QWidget, QMessageBox, QTableWidgetItem
 from PyQt5 import uic
 from PyQt5.QtGui import QPixmap, QIcon
 
-# 连接数据库
+#连接数据库
 try:
 
     conn = pymysql.connect(host='localhost', user='root', password='3260.hxs', database='users_and_passwords')
@@ -19,12 +19,39 @@ try:
 except pymysql.MySQLError as e:
     print("数据库连接失败", e)
     exit()
+def get_current_week_number():
+    # 设置第一周的第一天日期
+    first_day_of_first_week = datetime(2024, 2, 26)
 
+    # 获取当前日期
+    current_date = datetime.now()
 
+    # 计算当前日期与第一周的第一天之间的天数差
+    days_diff = (current_date - first_day_of_first_week).days
+
+    # 计算当前是第几周
+    current_week = (days_diff // 7) + 1
+
+    return current_week
+def extract_numbers(text):
+    # 使用正则表达式匹配数字和数字范围
+    matches = re.findall(r'\d+-\d+|\d+', text)
+    # 如果只有一个数字或数字范围，则将范围中的数字全部提取
+    numbers = []
+    for match in matches:
+        if '-' in match:
+            start, end = map(int, match.split('-'))
+            numbers.extend(range(start, end + 1))
+        else:
+            numbers.append(int(match))
+    # 返回整数列表
+    return numbers
 # 查询指定教学楼在指定时间段的空闲教室
 def query_empty_classrooms(building, time):
-    conn = pymysql.connect(host='localhost', user='root', password='3260.hxs', database='vacantclassrooms')
+    conn = pymysql.connect(host='localhost', user='root', password='3260.hxs', database='vacantclassrooms_test')
     cursor = conn.cursor()
+
+    current_week = get_current_week_number()  # 获取当前周数
 
     current_datetime = datetime.now()
     weekday = current_datetime.weekday()
@@ -34,6 +61,7 @@ def query_empty_classrooms(building, time):
     # 获取指定教学楼的所有教室列表
     cursor.execute(f"SHOW TABLES LIKE '{building}_%'")
     all_classrooms = [row[0] for row in cursor.fetchall()]
+
     time_mapping = {
         "8:00": 1,
         "8:50": 2,
@@ -60,13 +88,16 @@ def query_empty_classrooms(building, time):
             SELECT {current_weekday_name} FROM {classroom}
             WHERE id = {time_id}
         ''')
-        if cursor.fetchone()[0] == 1:
+
+        # 提取教室占用情况字段，并作为参数传递给 extract_numbers 函数
+        occupied_status = cursor.fetchone()[0]
+        if current_week in extract_numbers(occupied_status):
             occupied_classrooms.append(classroom)
 
     # 计算空闲教室
     empty_classrooms = [room for room in all_classrooms if room not in occupied_classrooms]
-    return empty_classrooms
 
+    return empty_classrooms
 
 class logInWidget(QWidget):
     def __init__(self):
@@ -480,7 +511,7 @@ class mainWidget(QWidget):
                 button.setChecked(False)
 
 
-# 主程序
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
 
