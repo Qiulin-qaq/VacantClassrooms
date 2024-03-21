@@ -48,7 +48,7 @@ def extract_numbers(text):
     return numbers
 # 查询指定教学楼在指定时间段的空闲教室
 def query_empty_classrooms(building, time):
-    conn = pymysql.connect(host='localhost', user='root', password='3260.hxs', database='vacantclassrooms_test')
+    conn = pymysql.connect(host='localhost', user='root', password='3260.hxs', database='vacantclassrooms')
     cursor = conn.cursor()
 
     current_week = get_current_week_number()  # 获取当前周数
