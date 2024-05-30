@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://localhost:3306/users_and_passwords</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="vacantclassrooms@localhost" uuid="eca22193-90d4-4909-b1a7-b54cab31b9f7">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/vacantclassrooms</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
