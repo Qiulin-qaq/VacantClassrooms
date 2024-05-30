@@ -1,5 +1,8 @@
 import pymysql
 
+from config import config
+
+
 def delete_all_table_data(conn):
     cursor = conn.cursor()
     show_tables_query = "SHOW TABLES"
@@ -12,9 +15,11 @@ def delete_all_table_data(conn):
     cursor.close()
     conn.commit()
 
+
 # 使用示例
 # 删除数据库中所有表的数据
 if __name__ == '__main__':
-    conn = pymysql.connect(host='localhost', user='root', password='111111', database='vacantclassrooms')
+    conn = pymysql.connect(host=config.host, user=config.db_user, password=config.db_pwd,
+                           database=config.db_name_data)
     delete_all_table_data(conn)
     conn.close()

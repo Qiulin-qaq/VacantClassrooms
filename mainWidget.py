@@ -4,11 +4,18 @@ from datetime import datetime
 
 import re
 import pymysql
-from PyQt5 import uic
+import requests
+
 from PyQt5.QtCore import Qt
 import feedbackWidget
 from PyQt5.QtWidgets import QWidget, QTableWidgetItem
 from ui.mainPage2Ui import Ui_Widget
+
+userno = 2022211500
+pwd = "Ww12345678"
+login_url = "http://jwglweixin.bupt.edu.cn/bjyddx/login"
+query_url = "http://jwglweixin.bupt.edu.cn/bjyddx/todayClassrooms?campusId=01"
+
 
 def get_current_week_number():
     # 设置第一周的第一天日期
@@ -25,6 +32,7 @@ def get_current_week_number():
 
     return current_week
 
+
 def extract_numbers(text):
     # 使用正则表达式匹配数字和数字范围
     matches = re.findall(r'\d+-\d+|\d+', str(text))
@@ -39,8 +47,95 @@ def extract_numbers(text):
     # 返回整数列表
     return numbers
 
-def query_empty_classrooms(building, time):
-    conn = pymysql.connect(host='localhost', user='root', password='111111', database='vacantclassrooms')
+
+# 通过jw查
+def login():
+    payload = {
+        'userNo': userno,
+        'pwd': pwd,
+
+    }
+
+    response = requests.post(login_url, data=payload)
+
+    # 检查HTTP响应状态码
+    if response.status_code == 200:
+        try:
+            # 尝试解析响应JSON数据
+            response_data = response.json()
+
+            global token
+            token = response_data['data']['token']
+            return token
+        except requests.exceptions.JSONDecodeError:
+            # 处理JSON解析错误
+            print("Failed to decode JSON from response. Response content:", response.text)
+    else:
+        # 输出非200状态码的响应内容
+        print("Login failed, HTTP status code:", response.status_code)
+        print("Response content:", response.text)
+        return None
+
+
+def extract(classrooms, prefix):
+    full_prefix = prefix + '-'
+    parts = classrooms.split(',')
+
+    match = []
+    for part in parts:
+        part = part.strip()
+        if part.startswith(full_prefix):
+            match.append(part)
+    return match
+
+
+def query(data):
+    payload = {
+        'userNo': userno,
+        'pwd': pwd,
+        'token': token,
+
+    }
+    response = requests.post(query_url, data=payload)
+
+    # 检查HTTP响应状态码
+    if response.status_code == 200:
+        try:
+            # 尝试解析响应JSON数据
+            response_data = response.json()
+
+            classtable = []
+            for item in response_data['data']:
+                classtable.append(item)
+
+            queryFirst = []
+
+            for item in classtable:
+                if item.get('NODENAME') == data['NODENAME']:
+                    queryFirst.append(item)
+
+            matchString = queryFirst[0]['CLASSROOMS']
+
+            result = extract(matchString, data['CLASSROOMS'])
+
+            return result
+
+
+
+
+
+        except requests.exceptions.JSONDecodeError:
+            # 处理JSON解析错误
+            print("Failed to decode JSON from response. Response content:", response.text)
+    else:
+        # 输出非200状态码的响应内容
+        print("Login failed, HTTP status code:", response.status_code)
+        print("Response content:", response.text)
+        return None
+
+
+def query_empty_classrooms_local(building, time):
+    conn = pymysql.connect(host='localhost', user='root', password='3260.hxs', database='vacantclassrooms')
     cursor = conn.cursor()
 
     current_week = get_current_week_number()  # 获取当前周数
@@ -93,6 +188,48 @@ def query_empty_classrooms(building, time):
 
     return empty_classrooms
 
+
+def query_empty_classrooms_jw(building, time):
+    login()
+    time_mapping = {
+        '8:00': '1',
+        '8:50': '2',
+        '9:50': '3',
+        '10:40': '4',
+        '11:30': '5',
+        '13:00': '6',
+        '13:50': '7',
+        '14:45': '8',
+        '15:40': '9',
+        '16:35': '10',
+        '17:25': '11',
+        '18:30': '12',
+        '19:20': '13',
+        '20:10': '14'
+    }
+    building = building.replace('c', '')
+    data = {
+        'NODENAME': time_mapping[time],
+        'CLASSROOMS': building
+    }
+    jw_data = query(data)
+
+    jw_data = ['c' + classroom for classroom in jw_data]
+    return query(data)
+
+
+def query_empty_classrooms(building, time):
+    local_data = query_empty_classrooms_local(building, time)
+    jw_data = query_empty_classrooms_jw(building, time)
+    jw_data_cleaned = ['c' + re.sub(r'\(\d+\)', '', re.sub(r'-', '_', classroom)) for classroom in jw_data]
+
+    if jw_data_cleaned:
+        return jw_data_cleaned
+    # 教务访问失败（网络连接问题等等）使用excel课表查询
+    else:
+        return local_data
+
+
 class mainWidget(QWidget):
     def __init__(self):
         super().__init__()
@@ -125,7 +262,6 @@ class mainWidget(QWidget):
         }
         self.init_ui()
 
-
     def init_ui(self):
         self.ui = Ui_Widget()
         self.ui.setupUi(self)
@@ -155,7 +291,7 @@ class mainWidget(QWidget):
         self.time14_QPushButton = self.ui.pushButton_19  # 时间段14
         self.time_All_QPushButton = self.ui.pushButton_20  # 时间段全选
 
-        self.Btn_feedback=self.ui.Btn_feedback #教室空闲情况反馈
+        self.Btn_feedback = self.ui.Btn_feedback  # 教室空闲情况反馈
 
         # self.setWindowIcon(QIcon('./image/searchIcon.png'))
         # self.badge_QLabel.setPixmap(QPixmap('./image/schoolBadge.png'))
@@ -290,7 +426,6 @@ class mainWidget(QWidget):
             self.update()
             self.show_empty_classrooms()
 
-
     def show_empty_classrooms(self):
         self.vacantClassrooms.setRowCount(len(self.empty_classrooms))
         # self.vacantClassrooms.setVerticalHeaderLabels(self.empty_classrooms)
@@ -343,7 +478,6 @@ class mainWidget(QWidget):
             for button in self.time_Enable_Buttons:
                 button.setChecked(False)
             self.update()
-
 
     def open_feedback_page(self):
         self.close()

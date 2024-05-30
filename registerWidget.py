@@ -2,12 +2,13 @@ import bcrypt
 import pymysql
 import logInWidget
 from PyQt5.QtWidgets import QApplication, QWidget, QMessageBox
-from mysql.connector import cursor
+
+
 from ui.registerWidgetUi import Ui_Widget
 
 try:
 
-    conn = pymysql.connect(host='localhost', user='root', password='111111', database='users_and_passwords')
+    conn = pymysql.connect(host="localhost", user="root", password="3260.hxs", database="users_and_passwords")
     cursor = conn.cursor()
 except pymysql.MySQLError as e:
     exit()

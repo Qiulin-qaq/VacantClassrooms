@@ -48,7 +48,7 @@ class feedbackWidget(QWidget):
     def show_classrooms(self):
         sender=self.sender()
         building=sender.objectName().lower()
-        conn = pymysql.connect(host='localhost', user='root', password='111111', database='vacantclassrooms')
+        conn = pymysql.connect(host='localhost', user='root', password='3260.hxs', database='vacantclassrooms')
         cursor = conn.cursor()
 
         # 获取指定教学楼的所有教室列表
@@ -101,7 +101,7 @@ class feedbackWidget(QWidget):
             text=self.textEdit.toPlainText()
 
 
-            conn = pymysql.connect(host='localhost', user='root', password='111111', database='feedback')
+            conn = pymysql.connect(host='localhost', user='root', password='3260.hxs', database='feedback')
             cursor = conn.cursor()
 
             # 准备SQL插入语句

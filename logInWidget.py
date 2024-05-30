@@ -1,16 +1,17 @@
 import bcrypt
 import pymysql
 
-import  registerWidget
-import  mainWidget
-import  adminLoginWidget
+import registerWidget
+import mainWidget
+import adminLoginWidget
 from PyQt5.QtWidgets import QApplication, QWidget, QMessageBox
-from mysql.connector import cursor
+
+
 from ui.loginWidgetUi import Ui_Widget
 
 try:
 
-    conn = pymysql.connect(host='localhost', user='root', password='111111', database='users_and_passwords')
+    conn = pymysql.connect(host="localhost", user="root", password="3260.hxs", database="users_and_passwords")
     cursor = conn.cursor()
 except pymysql.MySQLError as e:
     exit()
@@ -27,23 +28,23 @@ class logInWidget(QWidget):
         self.ui.setupUi(self)
 
         # 提取要操作的控件
-        self.frame_pic=self.ui.frame_pic
+        self.frame_pic = self.ui.frame_pic
         self.frame_backgroud = self.ui.frame_background
-        self.label_pwd=self.ui.label_pwd
-        self.label_user_name=self.ui.label_user_name
+        self.label_pwd = self.ui.label_pwd
+        self.label_user_name = self.ui.label_user_name
         # self.badge_QLabel = self.ui.lbl_badgePicture  # 校徽图片
         # self.SysName_QLabel = self.ui.lbl_SystemName  # 系统名称
         self.username_QLineEdit = self.ui.lineE_user_name  # 用户名输入框
         self.password_QLineEdit = self.ui.password  # 密码输入框
         self.login_QPushButton = self.ui.Btn_login  # 登录按钮
         self.register_QPushButton = self.ui.btn_register  # 注册按钮
-        self.btn_admin=self.ui.btn_admin # 管理员登录按钮
+        self.btn_admin = self.ui.btn_admin  # 管理员登录按钮
 
         self.password_QLineEdit.setEchoMode(2)  # 设置密码输入框为密码模式
         self.login_QPushButton.setShortcut("Return")  # 设置登录按钮快捷键为回车
 
-        self.label_user_name.setScaledContents(True); #图片自适应label大小
-        self.label_pwd.setScaledContents(True);# 图片自适应label大小
+        self.label_user_name.setScaledContents(True);  # 图片自适应label大小
+        self.label_pwd.setScaledContents(True);  # 图片自适应label大小
 
         # 设置登录注册管理员按钮槽函数
         self.login_QPushButton.clicked.connect(self.login_verify)
@@ -108,6 +109,3 @@ class logInWidget(QWidget):
     # 对照哈希进行密码验证
     def verify_password(self, provided_password, stored_hash):
         return bcrypt.checkpw(provided_password.encode('utf-8'), stored_hash.encode('utf-8'))
-
-
-
