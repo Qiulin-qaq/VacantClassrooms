@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="/">
+    <file>image/searchIcon.png</file>
+    <file>image/feedbackicon.png</file>
+    <file>image/管理员管理.png</file>
+    <file>image/修改.png</file>
+    <file>image/用户信息查询.png</file>
+    <file>image/background-style2.jpg</file>
+    <file>image/3.png</file>
+    <file>image/background-3.png</file>
+    <file>image/pwd.png</file>
+    <file>image/user_name.png</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,2064 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1600</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>450</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>空教室查询系统主界面</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../image/searchIcon.png</normaloff>../image/searchIcon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#frame_background {
+    background-color: qlineargradient(x0: 0, y0: 0, x1: 0, y1: 1, stop: 0 rgb(37,85,177), stop: 1 rgb(164,250,255));
+}
+
+
+
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <item>
+    <widget class="QFrame" name="frame_background">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QFrame" name="frame_list">
+        <property name="minimumSize">
+         <size>
+          <width>500</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>351</width>
+          <height>100000</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#frame_list {
+            border: 1px solid black;
+        }</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLabel" name="logo">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>200</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">image: url(:/image/3.png);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QListWidget" name="listWidget">
+           <property name="styleSheet">
+            <string notr="true">QListView{
+	border:none;
+background-color:rgba(255,255,255,0);
+	color:rgb(255,255,255);
+}
+QListView::item{
+	back-ground-color:transparent;
+	height:40px;
+	padding-left:4px;
+}
+QListView::item:hover{
+back-ground-color:transparent;
+	back-ground-color:rgba(43,162,238,150);
+}
+QListView::item:selected{
+	back-ground-color:rgb(255,248,241);
+	color:black;
+	border-left:2px soild rgb(255,133,0);
+}</string>
+           </property>
+           <property name="autoScrollMargin">
+            <number>16</number>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>30</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="gridSize">
+            <size>
+             <width>0</width>
+             <height>117</height>
+            </size>
+           </property>
+           <item>
+            <property name="text">
+             <string>用户管理</string>
+            </property>
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>16</pointsize>
+             </font>
+            </property>
+            <property name="textAlignment">
+             <set>AlignCenter</set>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../image/用户信息查询.png</normaloff>../image/用户信息查询.png</iconset>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>管理员管理</string>
+            </property>
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>16</pointsize>
+             </font>
+            </property>
+            <property name="textAlignment">
+             <set>AlignCenter</set>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../image/管理员管理.png</normaloff>../image/管理员管理.png</iconset>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>受理反馈</string>
+            </property>
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>16</pointsize>
+             </font>
+            </property>
+            <property name="textAlignment">
+             <set>AlignCenter</set>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../image/feedbackicon.png</normaloff>../image/feedbackicon.png</iconset>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>修改教室空闲情况</string>
+            </property>
+            <property name="font">
+             <font>
+              <family>微软雅黑</family>
+              <pointsize>16</pointsize>
+             </font>
+            </property>
+            <property name="textAlignment">
+             <set>AlignCenter</set>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../image/修改.png</normaloff>../image/修改.png</iconset>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="Btn_return">
+             <property name="minimumSize">
+              <size>
+               <width>300</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>300</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>16</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{
+	margin-right:3px;
+margin-bottom:0px;
+color:rgb(255,255,255);
+background-color:rgb(255,150,130);
+border-radius:24px;
+}</string>
+             </property>
+             <property name="text">
+              <string>返回登录界面</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>50</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame_table">
+        <property name="styleSheet">
+         <string notr="true">#frame_table {
+            border: 1px solid black;
+        }</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QStackedWidget" name="stackedWidget">
+           <property name="cursor">
+            <cursorShape>ArrowCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: transparent;</string>
+           </property>
+           <property name="currentIndex">
+            <number>1</number>
+           </property>
+           <widget class="QWidget" name="page_1">
+            <property name="contextMenuPolicy">
+             <enum>Qt::CustomContextMenu</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_9">
+               <item>
+                <spacer name="horizontalSpacer_10">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QFrame" name="frame_user_name">
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_4">
+                  <item row="0" column="0">
+                   <layout class="QHBoxLayout" name="horizontalLayout_11">
+                    <item>
+                     <spacer name="horizontalSpacer_21">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Fixed</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>10</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_user_name">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>30</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>30</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border-image: url(:/image/user_name.png);</string>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="user_name"/>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_13">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="Btn_refresh_user">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>40</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>40</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>../image/刷新.png</normaloff>../image/刷新.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>32</width>
+                   <height>32</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_10">
+               <item>
+                <spacer name="horizontalSpacer_11">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QTableWidget" name="table_user">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>400</width>
+                   <height>600</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>2000</width>
+                   <height>1000</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">#table_feedback{ background-color: rgb(37,85,177); }
+
+/* 设置表格的基本样式 */  
+QTableView {  
+border-image:url(:/res/pic/background-1.png);
+    background-color: #f9f9f9; /* 背景色 */  
+    border: 2px solid #a1a1a1; /* 边框 */  
+    gridline-color: #e0e0e0; /* 网格线颜色 */  
+    selection-background-color: #88d8b0; /* 选中项背景色 */  
+    selection-color: #ffffff; /* 选中项文字颜色 */  
+}  
+  
+/* 设置表头样式 */  
+QHeaderView::section {  
+    background-color: #f0a3a3; /* 背景色 */  
+    color: #ffffff; /* 文字颜色 */  
+    border: 1px solid #a1a1a1; /* 边框 */  
+    border-bottom: 2px solid #a1a1a1; /* 底边框加粗 */  
+    padding: 4px; /* 内边距 */  
+    font-weight: bold; /* 字体加粗 */  
+}  
+  
+/* 设置表格项的样式 */  
+QTableView::item {  
+    border: none; /* 无边框 */  
+    padding: 4px; /* 内边距 */  
+	background-color: transparent; 
+}  
+  
+/* 奇数行样式 */  
+QTableView::item:nth-child(odd) {  
+    background-color: #e9e9e9; /* 奇数行背景色 */  
+}  
+  
+/* 偶数行样式 */  
+QTableView::item:nth-child(even) {  
+    background-color: #f5f5f5; /* 偶数行背景色 */  
+}  
+  
+/* 鼠标悬停时的样式 */  
+QTableView::item:hover {  
+    background-color: #c8e6c9; /* 鼠标悬停时的背景色 */  
+}  
+  
+/* 选中项的样式（当与selection-background-color不同时使用）*/  
+QTableView::item:selected {  
+    background-color: #a5d6a7; /* 选中项背景色 */  
+}  
+  
+/* 自定义滚动条样式 */  
+QScrollBar:vertical {  
+    border: none; /* 无边框 */  
+    background: #f0f0f0; /* 背景色 */  
+    width: 15px; /* 宽度 */  
+    margin: 0px 0px 0px 0px; /* 边距 */  
+}  
+  
+QScrollBar::handle:vertical {  
+    background: #a8a8a8; /* 滑块背景色 */  
+    min-height: 20px; /* 最小高度 */  
+}  
+  
+QScrollBar::add-line:vertical {  
+    border: none; /* 无边框 */  
+    background: none; /* 无背景 */  
+    height: 0px; /* 高度 */  
+    subcontrol-position: bottom; /* 位置 */  
+    subcontrol-origin: margin; /* 起始位置 */  
+}  
+  
+QScrollBar::sub-line:vertical {  
+    border: none; /* 无边框 */  
+    background: none; /* 无背景 */  
+    height: 0px; /* 高度 */  
+    subcontrol-position: top; /* 位置 */  
+    subcontrol-origin: margin; /* 起始位置 */  
+}  
+  
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {  
+    border: none; /* 无边框 */  
+    background: none; /* 无背景 */  
+    height: 0px; /* 高度 */  
+}  
+  
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {  
+    background: none; /* 无背景 */  
+}
+
+</string>
+                 </property>
+                 <property name="editTriggers">
+                  <set>QAbstractItemView::DoubleClicked</set>
+                 </property>
+                 <property name="rowCount">
+                  <number>10</number>
+                 </property>
+                 <property name="columnCount">
+                  <number>4</number>
+                 </property>
+                 <attribute name="horizontalHeaderStretchLastSection">
+                  <bool>true</bool>
+                 </attribute>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <column>
+                  <property name="text">
+                   <string>用户名</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>密码</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>是否为管理员</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>id</string>
+                  </property>
+                 </column>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_12">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_5">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Fixed</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="page_2"/>
+           <widget class="QWidget" name="page_3">
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <item>
+                <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="Btn_refresh">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>40</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>40</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>../image/刷新.png</normaloff>../image/刷新.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>32</width>
+                   <height>32</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <item>
+                <spacer name="horizontalSpacer_4">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QTableWidget" name="table_feedback">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>400</width>
+                   <height>600</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>2000</width>
+                   <height>1000</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">#table_feedback{ background-color: rgb(37,85,177); }
+
+/* 设置表格的基本样式 */  
+QTableView {  
+border-image:url(:/res/pic/background-1.png);
+    background-color: #f9f9f9; /* 背景色 */  
+    border: 2px solid #a1a1a1; /* 边框 */  
+    gridline-color: #e0e0e0; /* 网格线颜色 */  
+    selection-background-color: #88d8b0; /* 选中项背景色 */  
+    selection-color: #ffffff; /* 选中项文字颜色 */  
+}  
+  
+/* 设置表头样式 */  
+QHeaderView::section {  
+    background-color: #f0a3a3; /* 背景色 */  
+    color: #ffffff; /* 文字颜色 */  
+    border: 1px solid #a1a1a1; /* 边框 */  
+    border-bottom: 2px solid #a1a1a1; /* 底边框加粗 */  
+    padding: 4px; /* 内边距 */  
+    font-weight: bold; /* 字体加粗 */  
+}  
+  
+/* 设置表格项的样式 */  
+QTableView::item {  
+    border: none; /* 无边框 */  
+    padding: 4px; /* 内边距 */  
+	background-color: transparent; 
+}  
+  
+/* 奇数行样式 */  
+QTableView::item:nth-child(odd) {  
+    background-color: #e9e9e9; /* 奇数行背景色 */  
+}  
+  
+/* 偶数行样式 */  
+QTableView::item:nth-child(even) {  
+    background-color: #f5f5f5; /* 偶数行背景色 */  
+}  
+  
+/* 鼠标悬停时的样式 */  
+QTableView::item:hover {  
+    background-color: #c8e6c9; /* 鼠标悬停时的背景色 */  
+}  
+  
+/* 选中项的样式（当与selection-background-color不同时使用）*/  
+QTableView::item:selected {  
+    background-color: #a5d6a7; /* 选中项背景色 */  
+}  
+  
+/* 自定义滚动条样式 */  
+QScrollBar:vertical {  
+    border: none; /* 无边框 */  
+    background: #f0f0f0; /* 背景色 */  
+    width: 15px; /* 宽度 */  
+    margin: 0px 0px 0px 0px; /* 边距 */  
+}  
+  
+QScrollBar::handle:vertical {  
+    background: #a8a8a8; /* 滑块背景色 */  
+    min-height: 20px; /* 最小高度 */  
+}  
+  
+QScrollBar::add-line:vertical {  
+    border: none; /* 无边框 */  
+    background: none; /* 无背景 */  
+    height: 0px; /* 高度 */  
+    subcontrol-position: bottom; /* 位置 */  
+    subcontrol-origin: margin; /* 起始位置 */  
+}  
+  
+QScrollBar::sub-line:vertical {  
+    border: none; /* 无边框 */  
+    background: none; /* 无背景 */  
+    height: 0px; /* 高度 */  
+    subcontrol-position: top; /* 位置 */  
+    subcontrol-origin: margin; /* 起始位置 */  
+}  
+  
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {  
+    border: none; /* 无边框 */  
+    background: none; /* 无背景 */  
+    height: 0px; /* 高度 */  
+}  
+  
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {  
+    background: none; /* 无背景 */  
+}
+
+</string>
+                 </property>
+                 <property name="editTriggers">
+                  <set>QAbstractItemView::NoEditTriggers</set>
+                 </property>
+                 <property name="rowCount">
+                  <number>10</number>
+                 </property>
+                 <property name="columnCount">
+                  <number>6</number>
+                 </property>
+                 <attribute name="horizontalHeaderStretchLastSection">
+                  <bool>true</bool>
+                 </attribute>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <column>
+                  <property name="text">
+                   <string>教室</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>提交时间</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>       反馈内容       </string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>反馈编号</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>是否处理</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </column>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_5">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Fixed</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="page_4">
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <item>
+                <widget class="QLabel" name="current_week">
+                 <property name="font">
+                  <font>
+                   <family>微软雅黑</family>
+                   <pointsize>16</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_7">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>300</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QFrame" name="frame_combobox">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>100</height>
+                  </size>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_8">
+                  <item>
+                   <widget class="QComboBox" name="pcomboBox">
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>70</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QComboBox QAbstractItemView {background-color: white; border: 1px solid black;}
+    QComboBox QAbstractItemView::item:selected {background-color: green;color: whilte;} </string>
+                    </property>
+                    <item>
+                     <property name="text">
+                      <string>c1_101</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c1_127</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c1_201</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c1_202</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c1_229</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c1_234</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c1_236</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c1_301</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c1_302</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c1_329</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c1_331</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c1_401</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c1_402</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c1_415</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c1_428</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_101a</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_101b</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_104</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_107</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_112</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_121</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_127</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_129</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_138</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_201</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_225</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_226</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_227</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_236</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_238</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_240</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_301</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_306</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_312</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_313</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_316</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_317</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_321</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_324</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_325</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_328</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_334</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_336</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_339</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_401</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_403</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_413</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_418</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_420</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_424</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_426</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_428</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_435</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_437</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_438</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_441</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_501</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_502</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_506</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_507</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_509</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_510</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_511</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_512</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c2_513</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_105</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_108</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_111</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_117</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_134</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_205</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_208</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_211</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_217</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_235</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_237</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_305</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_308</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_311</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_317</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_326</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_328</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_333</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_335</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_337</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_339</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_405</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_408</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_411</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_417</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_426</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_428</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_433</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_435</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_437</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_519</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_535</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_537</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_539</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_540</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_546</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c3_717</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_103</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_111</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_112</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_113</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_115</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_116</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_121</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_123</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_124</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_127</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_138</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_202</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_203</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_208</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_226</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_228</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_230</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_231</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_232</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_238</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_302</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_303</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_313</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_318</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_324</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_326</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_327</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_328</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_340</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_401</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_402</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_410</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_412</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_414</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_416</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_417</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_419</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_421</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_422</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_427</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_441</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_443</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>c4_444</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_6">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>300</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="Btn_refresh_2">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>40</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>40</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset>
+                   <normaloff>../image/刷新.png</normaloff>../image/刷新.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>32</width>
+                   <height>32</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_7">
+               <item>
+                <spacer name="horizontalSpacer_8">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QTableWidget" name="table_class">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>400</width>
+                   <height>600</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>2000</width>
+                   <height>1000</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">#tableWidget{ background-color: #aaaaff; }
+/* 设置表格的基本样式 */  
+QTableView {  
+border-image:url(:/res/pic/background-1.png);
+    background-color: #f9f9f9; /* 背景色 */  
+    border: 2px solid #a1a1a1; /* 边框 */  
+    gridline-color: #e0e0e0; /* 网格线颜色 */  
+    selection-background-color: #88d8b0; /* 选中项背景色 */  
+    selection-color: #ffffff; /* 选中项文字颜色 */  
+}  
+  
+/* 设置表头样式 */  
+QHeaderView::section {  
+    background-color: #f0a3a3; /* 背景色 */  
+    color: #ffffff; /* 文字颜色 */  
+    border: 1px solid #a1a1a1; /* 边框 */  
+    border-bottom: 2px solid #a1a1a1; /* 底边框加粗 */  
+    padding: 4px; /* 内边距 */  
+    font-weight: bold; /* 字体加粗 */  
+}  
+  
+/* 设置表格项的样式 */  
+QTableView::item {  
+    border: none; /* 无边框 */  
+    padding: 4px; /* 内边距 */  
+	background-color: transparent; 
+}  
+  
+/* 奇数行样式 */  
+QTableView::item:nth-child(odd) {  
+    background-color: #e9e9e9; /* 奇数行背景色 */  
+}  
+  
+/* 偶数行样式 */  
+QTableView::item:nth-child(even) {  
+    background-color: #f5f5f5; /* 偶数行背景色 */  
+}  
+  
+/* 鼠标悬停时的样式 */  
+QTableView::item:hover {  
+    background-color: #c8e6c9; /* 鼠标悬停时的背景色 */  
+}  
+  
+/* 选中项的样式（当与selection-background-color不同时使用）*/  
+QTableView::item:selected {  
+    background-color: #a5d6a7; /* 选中项背景色 */  
+}  
+  
+/* 自定义滚动条样式 */  
+QScrollBar:vertical {  
+    border: none; /* 无边框 */  
+    background: #f0f0f0; /* 背景色 */  
+    width: 15px; /* 宽度 */  
+    margin: 0px 0px 0px 0px; /* 边距 */  
+}  
+  
+QScrollBar::handle:vertical {  
+    background: #a8a8a8; /* 滑块背景色 */  
+    min-height: 20px; /* 最小高度 */  
+}  
+  
+QScrollBar::add-line:vertical {  
+    border: none; /* 无边框 */  
+    background: none; /* 无背景 */  
+    height: 0px; /* 高度 */  
+    subcontrol-position: bottom; /* 位置 */  
+    subcontrol-origin: margin; /* 起始位置 */  
+}  
+  
+QScrollBar::sub-line:vertical {  
+    border: none; /* 无边框 */  
+    background: none; /* 无背景 */  
+    height: 0px; /* 高度 */  
+    subcontrol-position: top; /* 位置 */  
+    subcontrol-origin: margin; /* 起始位置 */  
+}  
+  
+QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {  
+    border: none; /* 无边框 */  
+    background: none; /* 无背景 */  
+    height: 0px; /* 高度 */  
+}  
+  
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {  
+    background: none; /* 无背景 */  
+}
+
+</string>
+                 </property>
+                 <property name="editTriggers">
+                  <set>QAbstractItemView::DoubleClicked</set>
+                 </property>
+                 <property name="textElideMode">
+                  <enum>Qt::ElideLeft</enum>
+                 </property>
+                 <property name="rowCount">
+                  <number>14</number>
+                 </property>
+                 <attribute name="horizontalHeaderStretchLastSection">
+                  <bool>true</bool>
+                 </attribute>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <row/>
+                 <column>
+                  <property name="text">
+                   <string>Mon</string>
+                  </property>
+                  <property name="textAlignment">
+                   <set>AlignCenter</set>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Tues</string>
+                  </property>
+                  <property name="textAlignment">
+                   <set>AlignCenter</set>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Wed</string>
+                  </property>
+                  <property name="textAlignment">
+                   <set>AlignCenter</set>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Thur</string>
+                  </property>
+                  <property name="textAlignment">
+                   <set>AlignCenter</set>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Fri</string>
+                  </property>
+                  <property name="textAlignment">
+                   <set>AlignCenter</set>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Sat</string>
+                  </property>
+                  <property name="textAlignment">
+                   <set>AlignCenter</set>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>Sun</string>
+                  </property>
+                  <property name="textAlignment">
+                   <set>AlignCenter</set>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>start_time</string>
+                  </property>
+                  <property name="textAlignment">
+                   <set>AlignCenter</set>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>end_time</string>
+                  </property>
+                  <property name="textAlignment">
+                   <set>AlignCenter</set>
+                  </property>
+                 </column>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_9">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Fixed</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="../qrc.qrc"/>
+ </resources>
+ <connections/>
+</ui>
