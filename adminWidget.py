@@ -34,6 +34,9 @@ class adminWidget(QWidget):
         self.table_user=self.ui.table_user
         self.user_name=self.ui.user_name
         self.Btn_refresh_user=self.ui.Btn_refresh_user
+        self.user_name_2=self.ui.user_name_2
+        self.table_admin=self.ui.table_admin
+        self.Btn_refresh_admin=self.ui.Btn_refresh_admin
 
         self.list.currentRowChanged.connect(self.switch_widget)
         self.Btn_refresh.clicked.connect(self.refresh_feedback)
@@ -41,6 +44,9 @@ class adminWidget(QWidget):
         self.Btn_return.clicked.connect(self.return_login)
         self.Btn_refresh_user.clicked.connect(self.refresh_user)
         self.user_name.textChanged.connect(self.locate)
+        self.user_name_2.textChanged.connect(self.locate_admin)
+        self.Btn_refresh_admin.clicked.connect(self.refresh_admin)
+
 
         self.table_user.setContextMenuPolicy(Qt.CustomContextMenu)
         self.table_user.customContextMenuRequested.connect(self.on_tableWidget_customContextMenuRequested)
@@ -443,4 +449,116 @@ class adminWidget(QWidget):
         clicked_row = self.table_user.indexAt(pos).row()
         self.table_user.removeRow(clicked_row)
 
-    # def init_page_1(self):
+    def init_page_1(self):
+        self.table_admin.clearContents()
+        self.table_admin.setColumnWidth(0, 200)  # 第一列宽度为 100 像素
+        self.table_admin.setColumnWidth(1, 500)
+        self.table_admin.setColumnWidth(2, 150)
+        self.table_admin.setColumnWidth(3, 150)
+        # 初始化连接和游标
+        conn = None
+        cursor = None
+
+        try:
+            # 尝试连接数据库
+            conn = pymysql.connect(host='localhost', user='root', password='111111', database='users_and_passwords')
+            cursor = conn.cursor()
+            print("数据库连接成功")
+
+            # 执行查询
+            query = "SELECT username,password,is_admin,id FROM users"
+            cursor.execute(query)
+
+            # 获取查询结果
+            results = cursor.fetchall()
+            row = 0
+            for record in results:
+                username, password, is_admin, id = record  # 包括 id 在解包中
+                print(is_admin)
+                if is_admin == 0:
+                    continue
+                else:
+                    self.table_admin.insertRow(row)
+                    item = QTableWidgetItem(username)
+                    item.setTextAlignment(Qt.AlignCenter)
+                    self.table_admin.setItem(row, 0, item)
+                    self.table_admin.setItem(row, 1, QTableWidgetItem(password))
+                    id_item = QTableWidgetItem(str(id))
+                    id_item.setTextAlignment(Qt.AlignCenter)  # 设置文本居中对齐
+                    self.table_admin.setItem(row, 3, id_item)
+                    # 设置第五列为复选框
+                    checkbox = QCheckBox()
+                    checkbox.setObjectName("checkAdmin")
+                    checkbox.setChecked(True)
+                    cell_widget = QWidget()
+                    layout = QHBoxLayout()
+                    layout.setContentsMargins(0, 0, 0, 0)
+                    cell_widget.setLayout(layout)
+                    layout.addWidget(checkbox)
+                    layout.setAlignment(checkbox, Qt.AlignCenter)
+                    self.table_admin.setCellWidget(row, 2, cell_widget)
+                    row = row + 1
+        except pymysql.MySQLError as e:
+            print("数据库连接失败或查询错误: ", e)
+        finally:
+            # 关闭游标和连接
+            if cursor:
+                cursor.close()
+            if conn:
+                conn.close()
+
+    def refresh_admin(self):
+        for row in range(self.table_admin.rowCount()):
+            item = self.table_admin.item(row, 0)
+            if item is None:
+                continue
+            username = item.text()
+            item = self.table_admin.item(row, 1)
+            password = item.text()
+            pWidget = self.table_admin.cellWidget(row, 2)
+            if pWidget is not None:
+                childWidgets = pWidget.findChildren(QCheckBox, "checkAdmin")
+                pCheckBox = childWidgets[0]
+                if pCheckBox.isChecked():
+                    is_admin = 1
+                else:
+                    is_admin = 0
+            item = self.table_admin.item(row, 3)
+            id = item.text()
+            # 根据反馈更新数据库中的是否处理反馈
+            try:
+                # 尝试连接数据库
+                conn = pymysql.connect(host='localhost', user='root', password='111111', database='users_and_passwords')
+                cursor = conn.cursor()
+                print("数据库连接成功")
+
+                # 执行查询
+                query = "UPDATE `users_and_passwords`.`users` SET `username` = %s, `password` = %s, `is_admin` = %s,  `id` = %s WHERE `id` = %s;"
+                cursor.execute(query, (username, password, is_admin, id, id))
+                conn.commit()  # 提交事务
+            except pymysql.MySQLError as e:
+                print("数据库连接失败或查询错误: ", e)
+            finally:
+                # 关闭游标和连接
+                if cursor:
+                    cursor.close()
+                if conn:
+                    conn.close()
+
+    def locate_admin(self):
+        input_name = self.user_name_2.text()
+        row_num = self.table_admin.rowCount()
+
+        if input_name == "":
+            for i in range(row_num):
+                self.table_admin.setRowHidden(i, False)
+        else:
+            items = self.table_admin.findItems(self.user_name_2.text(), Qt.MatchContains)
+            for i in range(row_num):
+                self.table_admin.setRowHidden(i, True)
+
+            if items:
+                for item in items:
+                    self.table_admin.setRowHidden(item.row(), False)
+
+
